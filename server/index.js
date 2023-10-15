@@ -28,8 +28,21 @@ app.post("/addNote", (req, res) => {
   });
 });
 
+app.post("/deleteNote", (req, res) => {
+  const { id } = req.body;
+  const deleteQuery = "DELETE FROM `note-app`.note WHERE (`id` = ?)";
+  db.query(deleteQuery, [id], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    if (data) {
+      return res.send("삭제 완료");
+    }
+  });
+});
+
 app.get("/list", (req, res) => {
-  const selectQuery = "SELECT * FROM `note-app`.note;";
+  const selectQuery = "SELECT * FROM `note-app`.note";
   db.query(selectQuery, (err, data) => {
     if (err) {
       return res.send(err);
