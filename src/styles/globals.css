@@ -72,6 +72,23 @@ textarea:focus {
   justify-content: space-between;
 }
 
+.noteIcons {
+  display: flex;
+}
+
+.noteIcons div + div {
+  margin-left: 10px;
+}
+
+.modifyIcon,
 .deleteIcon {
   cursor: pointer;
+}
+
+.modifyIcon:hover {
+  color: blue;
+}
+
+.deleteIcon:hover {
+  color: red;
 }

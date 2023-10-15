@@ -41,6 +41,19 @@ app.post("/deleteNote", (req, res) => {
   });
 });
 
+app.post("/updateNote", (req, res) => {
+  const { id, text } = req.body;
+  const updateQuery = "UPDATE `note-app`.note SET `text` = ? WHERE (`id` = ?);";
+  db.query(updateQuery, [text, id], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    if (data) {
+      return res.send("업데이트 완료");
+    }
+  });
+});
+
 app.get("/list", (req, res) => {
   const selectQuery = "SELECT * FROM `note-app`.note";
   db.query(selectQuery, (err, data) => {

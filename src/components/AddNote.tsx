@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AddNoteMutationType } from "@/types/type";
 import { makeRequest } from "@/api/api";
