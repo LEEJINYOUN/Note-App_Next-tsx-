@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
+import { ReactQueryProvider } from "@/utils/ReactQueryProvider";
 
 export const metadata: Metadata = {
   title: "Note App",
@@ -12,8 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>{children}</body>
-    </html>
+    <ReactQueryProvider>
+      <html>
+        <body>{children}</body>
+      </html>
+    </ReactQueryProvider>
   );
 }

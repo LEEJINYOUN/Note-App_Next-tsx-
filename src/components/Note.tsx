@@ -1,11 +1,12 @@
+import { NoteType } from "@/types/type";
 import { MdDeleteForever } from "react-icons/md";
 
-export default function Note() {
+export default function Note({ id, text, date }: NoteType) {
   return (
     <div className="note">
-      <span>내용</span>
+      <span>{text}</span>
       <div className="noteFooter">
-        <small>날짜</small>
+        <small>{date}</small>
         <MdDeleteForever className="deleteIcon" size="1.3em" />
       </div>
     </div>
