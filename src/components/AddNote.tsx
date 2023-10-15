@@ -1,6 +1,9 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AddNoteMutationType } from "@/types/type";
+import { makeRequest } from "@/api/api";
 
 export default function AddNote() {
   const [noteText, setNoteText] = useState("");
@@ -28,29 +31,31 @@ export default function AddNote() {
     }
   };
 
+  const queryClient = useQueryClient();
+
+  const addNoteMutation = useMutation(
+    ({ text, date }: AddNoteMutationType) => {
+      return makeRequest.post("addNote", {
+        text,
+        date,
+      });
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["noteList"]);
+      },
+      onError: (error) => {
+        alert("오류 발생 : " + error);
+      },
+    }
+  );
+
   const onSave = async () => {
     if (noteText.trim().length > 0) {
-      try {
-        await axios({
-          method: "post",
-          data: {
-            text: noteText,
-            date: today,
-          },
-          withCredentials: true,
-          url: process.env.NEXT_PUBLIC_POST_URL + "addNote",
-        })
-          .then((res) => {
-            if (res.data === "추가 완료") {
-              console.log("추가 완료");
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      } catch (err) {
-        console.log(err);
-      }
+      addNoteMutation.mutate({
+        text: noteText,
+        date: today,
+      });
       setNoteText("");
     }
   };
