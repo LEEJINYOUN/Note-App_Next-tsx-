@@ -1,23 +1,23 @@
 "use client";
 import { useState } from "react";
+import { characterLimit } from "@/constants/constant";
+import { updateNoteAPI } from "@/services/service";
+import { UpdateNoteType } from "@/types/type";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addNoteAPI } from "@/services/service";
-import { characterLimit, getFormatDate } from "@/constants/constant";
 
-export default function AddNote() {
-  const [noteText, setNoteText] = useState("");
-  let today = getFormatDate(new Date());
+export default function UpdateNote({ setModify, id, text }: UpdateNoteType) {
+  const [modifyText, setModifyText] = useState("");
 
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     let value = e.target.value;
     if (characterLimit - value.length >= 0) {
-      setNoteText(value);
+      setModifyText(value);
     }
   };
 
   const queryClient = useQueryClient();
 
-  const addNoteMutation = useMutation(addNoteAPI, {
+  const updateNoteMutation = useMutation(updateNoteAPI, {
     onSuccess: () => {
       queryClient.invalidateQueries(["noteList"]);
     },
@@ -26,13 +26,10 @@ export default function AddNote() {
     },
   });
 
-  const onSave = async () => {
-    if (noteText.trim().length > 0) {
-      addNoteMutation.mutate({
-        text: noteText,
-        date: today,
-      });
-      setNoteText("");
+  const onSave = async (id: number) => {
+    if (modifyText.trim().length > 0) {
+      updateNoteMutation.mutate({ id, modifyText });
+      setModify(false);
     }
   };
 
@@ -42,12 +39,12 @@ export default function AddNote() {
         rows={8}
         cols={10}
         placeholder="내용 적기"
-        value={noteText}
+        defaultValue={text}
         onChange={onChange}
       ></textarea>
       <div className="noteFooter">
-        <small>남은 글자 수 : {characterLimit - noteText.length}</small>
-        <button className="save" onClick={onSave}>
+        <small>남은 글자 수 : {characterLimit - modifyText.length}</small>
+        <button className="save" onClick={() => onSave(id)}>
           저장
         </button>
       </div>
