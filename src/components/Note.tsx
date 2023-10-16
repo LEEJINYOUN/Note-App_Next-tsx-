@@ -9,7 +9,6 @@ import UpdateNote from "./UpdateNote";
 
 export default function Note({ id, text, date }: NoteType) {
   const [modify, setModify] = useState(false);
-  const [modifyText, setModifyText] = useState("");
 
   const queryClient = useQueryClient();
 
@@ -22,13 +21,12 @@ export default function Note({ id, text, date }: NoteType) {
     },
   });
 
-  const deleteNote = async (id: number) => {
-    deleteNoteMutation.mutate(id);
+  const modifyNote = () => {
+    setModify(true);
   };
 
-  const modifyNote = async () => {
-    setModify(true);
-    setModifyText(text);
+  const deleteNote = async (id: number) => {
+    deleteNoteMutation.mutate(id);
   };
 
   return (
@@ -44,7 +42,7 @@ export default function Note({ id, text, date }: NoteType) {
                   id={id}
                   className="modifyIcon"
                   size="1.3em"
-                  onClick={() => modifyNote()}
+                  onClick={modifyNote}
                 />
               </div>
               <div>
