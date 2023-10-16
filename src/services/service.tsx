@@ -1,5 +1,10 @@
-import { makeRequest } from "@/api/api";
+import axios from "axios";
 import { AddNoteMutationType, UpdateNoteMutationType } from "@/types/type";
+
+export const makeRequest = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_POST_URL,
+  withCredentials: true,
+});
 
 export const getNoteList = async () => {
   const getData = await fetch(process.env.NEXT_PUBLIC_POST_URL + "list", {
