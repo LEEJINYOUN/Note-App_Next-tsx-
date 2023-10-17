@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 노트 앱 (클론 코딩)
 
-## Getting Started
+<h2> 📃 개요 </h2>
 
-First, run the development server:
+- <h3>Next js 와 Mysql를 공부하기 위해 만든 앱</h3>
+  <br/><br/>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<h2> 🛠 사용 기술 </h2>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- <h3>Next js</h3>
+- <h3>React Query</h3>
+- <h3>Typescript</h3>
+- <h3>Mysql</h3>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  <br/><br/>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<h2> ⚙️ 구현 기능 </h2>
 
-## Learn More
+- <h3>메모 추가</h3>
+- <h3>메모 삭제</h3>
+- <h3>메모 수정</h3>
+- <h3>메모 북마크</h3>
+  <br/><br/>
 
-To learn more about Next.js, take a look at the following resources:
+<h2> 🎥 구현 화면 </h2>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 메모 추가
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![캡처](/public/imgs/메모%20추가_readme.gif)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 메모 삭제
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![캡처](/public/imgs/메모%20삭제_readme.gif)
+
+---
+
+## 메모 수정
+
+![캡처](/public/imgs/메모%20수정_readme.gif)
+
+---
+
+## 메모 북마크
+
+![캡처](/public/imgs/메모%20북마크_readme.gif)
+
+---
+
+## 반응형
+
+![캡처](/public/imgs/반응형_readme.gif)
+
+---
