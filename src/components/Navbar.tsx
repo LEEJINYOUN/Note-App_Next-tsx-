@@ -1,6 +1,6 @@
 "use client";
-import { NavbarMenu } from "@/constants/constant";
 import Link from "next/link";
+import { NavbarMenu } from "@/constants/constant";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {

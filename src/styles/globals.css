@@ -2,14 +2,18 @@ body {
   margin: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 a {
   color: black;
   text-decoration: none;
+}
+
+.container {
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  min-height: 100vh;
 }
 
 .header {
@@ -29,7 +33,7 @@ a {
 
 .link {
   margin: 0 2px;
-  padding: 2px 5px;
+  padding: 5px 7px;
 }
 
 .linked {
@@ -37,19 +41,59 @@ a {
   color: white;
 }
 
-.container {
-  max-width: 960px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
-  min-height: 100vh;
-}
-
 .notesList {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.note {
+  background-color: #fef68a;
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  white-space: pre-wrap;
+}
+
+.note span {
+  height: 100%;
+}
+
+.noteHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.bookmarkIcon,
+.deleteIcon,
+.modifyIcon {
+  cursor: pointer;
+}
+
+.bookmarkedIcon {
+  color: red;
+}
+
+.bookmarkIcon:hover {
+  color: red;
+}
+
+.deleteIcon:hover {
+  color: red;
+}
+
+.modifyIcon:hover {
+  color: blue;
+}
+
+.noteFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .note.new {
@@ -76,53 +120,4 @@ textarea:focus {
 .save:hover {
   background-color: #ededed;
   cursor: pointer;
-}
-
-.note {
-  background-color: #fef68a;
-  border-radius: 10px;
-  padding: 1rem;
-  min-height: 170px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  white-space: pre-wrap;
-}
-
-.note span {
-  height: 100%;
-}
-
-.noteHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.noteFooter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.bookmarkIcon,
-.modifyIcon,
-.deleteIcon {
-  cursor: pointer;
-}
-
-.bookmarkedIcon {
-  color: red;
-}
-
-.bookmarkIcon:hover {
-  color: red;
-}
-
-.modifyIcon:hover {
-  color: blue;
-}
-
-.deleteIcon:hover {
-  color: red;
 }

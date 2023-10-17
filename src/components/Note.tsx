@@ -11,6 +11,10 @@ import UpdateNote from "./UpdateNote";
 export default function Note({ id, text, date, bookmark }: NoteType) {
   const [modify, setModify] = useState(false);
 
+  const modifyNote = () => {
+    setModify(true);
+  };
+
   const queryClient = useQueryClient();
 
   const bookmarkNoteMutation = useMutation(bookmarkNoteAPI, {
@@ -35,10 +39,6 @@ export default function Note({ id, text, date, bookmark }: NoteType) {
     bookmarkNoteMutation.mutate(id);
   };
 
-  const modifyNote = () => {
-    setModify(true);
-  };
-
   const deleteNote = async (id: number) => {
     deleteNoteMutation.mutate(id);
   };
@@ -48,26 +48,18 @@ export default function Note({ id, text, date, bookmark }: NoteType) {
       {modify === false ? (
         <div className="note">
           <div className="noteHeader">
-            <div>
-              <AiFillHeart
-                id={id}
-                className={
-                  bookmark === 0
-                    ? "bookmarkIcon"
-                    : "bookmarkIcon bookmarkedIcon"
-                }
-                size="1.3em"
-                onClick={() => bookmarkNote(id)}
-              />
-            </div>
-            <div>
-              <MdDeleteForever
-                id={id}
-                className="deleteIcon"
-                size="1.3em"
-                onClick={() => deleteNote(id)}
-              />
-            </div>
+            <AiFillHeart
+              id={id}
+              className={`bookmarkIcon ${bookmark === 1 && "bookmarkedIcon"}`}
+              size="1.3em"
+              onClick={() => bookmarkNote(id)}
+            />
+            <MdDeleteForever
+              id={id}
+              className="deleteIcon"
+              size="1.3em"
+              onClick={() => deleteNote(id)}
+            />
           </div>
           <span>{text}</span>
           <div className="noteFooter">

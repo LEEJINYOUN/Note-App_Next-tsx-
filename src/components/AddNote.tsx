@@ -6,6 +6,7 @@ import { characterLimit, getFormatDate } from "@/constants/constant";
 
 export default function AddNote() {
   const [noteText, setNoteText] = useState("");
+
   let today = getFormatDate(new Date());
 
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -42,7 +43,7 @@ export default function AddNote() {
       <textarea
         rows={8}
         cols={10}
-        placeholder="내용 적기"
+        placeholder="메모할 내용..."
         value={noteText}
         onChange={onChange}
       ></textarea>

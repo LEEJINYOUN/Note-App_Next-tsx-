@@ -38,7 +38,7 @@ export default function UpdateNote({ setModify, id, text }: UpdateNoteType) {
       <textarea
         rows={8}
         cols={10}
-        placeholder="내용 적기"
+        placeholder="변경할 내용..."
         defaultValue={text}
         onChange={onChange}
       ></textarea>

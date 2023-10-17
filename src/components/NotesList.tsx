@@ -6,7 +6,7 @@ import { NoteType } from "@/types/type";
 import { getNoteList } from "@/services/service";
 
 export default function NotesList() {
-  const { data, isLoading, isError } = useQuery(["noteList"], getNoteList);
+  const { data } = useQuery(["noteList"], getNoteList);
 
   return (
     <div className="notesList">
