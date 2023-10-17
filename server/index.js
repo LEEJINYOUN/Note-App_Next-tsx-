@@ -103,6 +103,18 @@ app.get("/list", (req, res) => {
   });
 });
 
+app.get("/bookmark", (req, res) => {
+  const selectQuery = "SELECT * FROM `note-app`.note WHERE bookmark = '1'";
+  db.query(selectQuery, (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    if (data) {
+      return res.send(data);
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });

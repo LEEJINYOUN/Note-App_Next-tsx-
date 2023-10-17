@@ -12,3 +12,14 @@ export const getFormatDate = (date: any) => {
   minutes = minutes > 10 ? minutes : "0" + minutes;
   return `${year}/${month}/${day} ${hours}:${minutes} `;
 };
+
+export const NavbarMenu = [
+  {
+    name: "전체",
+    href: "/",
+  },
+  {
+    name: "북마크",
+    href: "/bookmark",
+  },
+];

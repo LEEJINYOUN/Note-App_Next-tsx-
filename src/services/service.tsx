@@ -16,6 +16,16 @@ export const getNoteList = async () => {
   return getData;
 };
 
+export const getBookmarkNoteList = async () => {
+  const getData = await fetch(process.env.NEXT_PUBLIC_POST_URL + "bookmark", {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((response) => response.json());
+  return getData;
+};
+
 export const addNoteAPI = ({ text, date, bookmark }: AddNoteMutationType) => {
   return makeRequest.post("addNote", {
     text,

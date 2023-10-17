@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { Metadata } from "next";
 import { ReactQueryProvider } from "@/utils/ReactQueryProvider";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "Note App",
@@ -15,7 +16,15 @@ export default function RootLayout({
   return (
     <ReactQueryProvider>
       <html>
-        <body>{children}</body>
+        <body>
+          <div className="container">
+            <div className="header">
+              <h1>노트 앱</h1>
+            </div>
+            <Navbar />
+            {children}
+          </div>
+        </body>
       </html>
     </ReactQueryProvider>
   );
