@@ -12,7 +12,13 @@ export default function NotesList() {
     <div className="notesList">
       {data &&
         data.map((item: NoteType, key: number) => (
-          <Note key={key} id={item.id} text={item.text} date={item.date} />
+          <Note
+            key={key}
+            id={item.id}
+            text={item.text}
+            date={item.date}
+            bookmark={item.bookmark}
+          />
         ))}
       <AddNote />
     </div>

@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 export interface AddNoteMutationType {
   text: string;
   date: string;
+  bookmark: number;
 }
 
 export interface NoteType extends AddNoteMutationType {

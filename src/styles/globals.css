@@ -66,23 +66,34 @@ textarea:focus {
   white-space: pre-wrap;
 }
 
+.note span {
+  height: 100%;
+}
+
+.noteHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .noteFooter {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.noteIcons {
-  display: flex;
-}
-
-.noteIcons div + div {
-  margin-left: 10px;
-}
-
+.bookmarkIcon,
 .modifyIcon,
 .deleteIcon {
   cursor: pointer;
+}
+
+.bookmarkedIcon {
+  color: red;
+}
+
+.bookmarkIcon:hover {
+  color: red;
 }
 
 .modifyIcon:hover {

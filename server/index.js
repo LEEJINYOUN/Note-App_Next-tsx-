@@ -16,27 +16,15 @@ app.use(
 );
 
 app.post("/addNote", (req, res) => {
-  const { text, date } = req.body;
-  const insertQuery = "INSERT INTO `note-app`.note (text, date ) VALUE (?,?)";
-  db.query(insertQuery, [text, date], (err, data) => {
+  const { text, date, bookmark } = req.body;
+  const insertQuery =
+    "INSERT INTO `note-app`.note (text, date, bookmark ) VALUE (?,?,?)";
+  db.query(insertQuery, [text, date, bookmark], (err, data) => {
     if (err) {
       return res.send(err);
     }
     if (data) {
       return res.send("추가 완료");
-    }
-  });
-});
-
-app.post("/deleteNote", (req, res) => {
-  const { id } = req.body;
-  const deleteQuery = "DELETE FROM `note-app`.note WHERE (`id` = ?)";
-  db.query(deleteQuery, [id], (err, data) => {
-    if (err) {
-      return res.send(err);
-    }
-    if (data) {
-      return res.send("삭제 완료");
     }
   });
 });
@@ -50,6 +38,55 @@ app.post("/updateNote", (req, res) => {
     }
     if (data) {
       return res.send("업데이트 완료");
+    }
+  });
+});
+
+app.post("/bookmarkNote", (req, res) => {
+  const { id } = req.body;
+  const selectQuery = "SELECT bookmark FROM `note-app`.note where id = ?";
+  const bookmarkTrueQuery =
+    "UPDATE `note-app`.`note` SET `bookmark` = '1' WHERE (`id` = ?);";
+  const BookmarkFalseQuery =
+    "UPDATE `note-app`.`note` SET `bookmark` = '0' WHERE (`id` = ?);";
+  db.query(selectQuery, [id], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    if (data) {
+      let isBookmark = data[0].bookmark;
+      if (isBookmark === 0) {
+        db.query(bookmarkTrueQuery, [id], (err, data) => {
+          if (err) {
+            return res.send(err);
+          }
+          if (data) {
+            return res.send("북마크 추가 완료");
+          }
+        });
+      } else {
+        db.query(BookmarkFalseQuery, [id], (err, data) => {
+          if (err) {
+            return res.send(err);
+          }
+          if (data) {
+            return res.send("북마크 해제 완료");
+          }
+        });
+      }
+    }
+  });
+});
+
+app.post("/deleteNote", (req, res) => {
+  const { id } = req.body;
+  const deleteQuery = "DELETE FROM `note-app`.note WHERE (`id` = ?)";
+  db.query(deleteQuery, [id], (err, data) => {
+    if (err) {
+      return res.send(err);
+    }
+    if (data) {
+      return res.send("삭제 완료");
     }
   });
 });

@@ -16,10 +16,11 @@ export const getNoteList = async () => {
   return getData;
 };
 
-export const addNoteAPI = ({ text, date }: AddNoteMutationType) => {
+export const addNoteAPI = ({ text, date, bookmark }: AddNoteMutationType) => {
   return makeRequest.post("addNote", {
     text,
     date,
+    bookmark,
   });
 };
 
@@ -27,6 +28,12 @@ export const updateNoteAPI = ({ id, modifyText }: UpdateNoteMutationType) => {
   return makeRequest.post("updateNote", {
     id,
     text: modifyText,
+  });
+};
+
+export const bookmarkNoteAPI = (id: number) => {
+  return makeRequest.post("bookmarkNote", {
+    id,
   });
 };
 

@@ -31,6 +31,7 @@ export default function AddNote() {
       addNoteMutation.mutate({
         text: noteText,
         date: today,
+        bookmark: 0,
       });
       setNoteText("");
     }
