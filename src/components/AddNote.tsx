@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { characterLimit, getFormatDate } from "@/constants/constant";
 import { addNoteAPI } from "@/services/action";
+import { CHARACTER_LIMIT } from "@/constants/NoteConstant";
+import { getFormatDate } from "@/hooks/getToday";
 
 export default function AddNote() {
   const [noteText, setNoteText] = useState("");
@@ -11,7 +12,7 @@ export default function AddNote() {
 
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     let value = e.target.value;
-    if (characterLimit - value.length >= 0) {
+    if (CHARACTER_LIMIT - value.length >= 0) {
       setNoteText(value);
     }
   };
@@ -48,7 +49,7 @@ export default function AddNote() {
         onChange={onChange}
       ></textarea>
       <div className="noteFooter">
-        <small>남은 글자 수 : {characterLimit - noteText.length}</small>
+        <small>남은 글자 수 : {CHARACTER_LIMIT - noteText.length}</small>
         <button className="save" onClick={onSave}>
           저장
         </button>

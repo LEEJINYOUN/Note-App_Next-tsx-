@@ -1,5 +1,3 @@
-export const characterLimit = 200;
-
 export const getFormatDate = (date: any) => {
   let year = date.getFullYear();
   let month = 1 + date.getMonth();
