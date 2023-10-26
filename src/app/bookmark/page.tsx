@@ -1,15 +1,12 @@
 "use client";
 import Note from "@/components/Note";
-import { getBookmarkNoteList } from "@/services/service";
+import { fetchBookmarkNoteList } from "@/services/fetchData";
 import { NoteType } from "@/types/type";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 export default function BookmarkPage() {
-  const { data, isLoading, isError } = useQuery(
-    ["noteList"],
-    getBookmarkNoteList
-  );
+  const { data } = useQuery(["noteList"], fetchBookmarkNoteList);
 
   return (
     <div className="notesList">

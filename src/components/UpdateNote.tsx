@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import { characterLimit } from "@/constants/constant";
-import { updateNoteAPI } from "@/services/service";
 import { UpdateNoteType } from "@/types/type";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { updateNoteAPI } from "@/services/action";
 
 export default function UpdateNote({ setModify, id, text }: UpdateNoteType) {
   const [modifyText, setModifyText] = useState("");

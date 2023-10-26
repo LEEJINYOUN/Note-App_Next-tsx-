@@ -5,8 +5,8 @@ import { MdDeleteForever } from "react-icons/md";
 import { AiFillHeart } from "react-icons/ai";
 import { BsFillPencilFill } from "react-icons/bs";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { bookmarkNoteAPI, deleteNoteAPI } from "@/services/service";
 import UpdateNote from "./UpdateNote";
+import { bookmarkNoteAPI, deleteNoteAPI } from "@/services/action";
 
 export default function Note({ id, text, date, bookmark }: NoteType) {
   const [modify, setModify] = useState(false);

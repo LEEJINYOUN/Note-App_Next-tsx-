@@ -3,10 +3,10 @@ import Note from "./Note";
 import AddNote from "./AddNote";
 import { useQuery } from "@tanstack/react-query";
 import { NoteType } from "@/types/type";
-import { getNoteList } from "@/services/service";
+import { fetchNoteList } from "@/services/fetchData";
 
 export default function NotesList() {
-  const { data } = useQuery(["noteList"], getNoteList);
+  const { data } = useQuery(["noteList"], fetchNoteList);
 
   return (
     <div className="notesList">
